@@ -98,59 +98,53 @@ function validarCPF() {
 
 
 }
+function mascara(i){
+   
+	var v = i.value;
+	
+	if(isNaN(v[v.length-1])){ // impede entrar outro caractere que não seja número
+	   i.value = v.substring(0, v.length-1);
+	   return;
+	}
+	
+	i.setAttribute("maxlength", "14");
+	if (v.length == 3 || v.length == 7) i.value += ".";
+	if (v.length == 11) i.value += "-";
+ 
+ }
+ 
 
-
-function busca_cbo() {
-    var estado = document.getElementById("cuf").value;
-    var lista = document.getElementById("ccidade");
-    while (lista.options.length) {
-        lista.remove(0);
-    }
-    if (estado == "padeiro") {
-        padeiro();
-    } else {
-        if (estado == "AL") {
-            alagoas();
-        } else {
-            if (estado == "AM") {
-                amazonas();
-            } else {
-                if (estado == "AP") {
-                    amapa();
-                } else {
-                    if (estado == "GO") {
-                        goias();
-                    }
-                }
-            }
-        }
-    }
+function verificaCbo(){
+	var preencheCargo = document.getElementById("cbo").value;
+	console.log("peguei")
+	if (preencheCargo == "1") {
+	document.getElementById('cargo').value = "ABACAXICULTOR";
+	}
+	if (preencheCargo == "2") {
+	document.getElementById('cargo').value = "ABADE";
+	}
+	if (preencheCargo == "3") {
+	document.getElementById('cargo').value = "ABADESSA";
+	}
+	if (preencheCargo == "4") {
+	document.getElementById('cargo').value = "ABANADOR NA AGRICULTURA";
+	}
+	if (preencheCargo == "5") {
+	document.getElementById('cargo').value = "ABASTECEDOR DE CALDEIRA";
+	}
+	if (preencheCargo == "6") {
+	document.getElementById('cargo').value = "ABASTECEDOR DE COMBUSTÍVEL DE AERONAVE";
+	}
+	if (preencheCargo == "7") {
+	document.getElementById('cargo').value = "ABASTECEDOR DE LINHA DE PRODUÇÃO";
+	}
+	if (preencheCargo == "8") {
+	document.getElementById('cargo').value = "ABASTECEDOR DE MÁQUINAS DE LINHA DE PRODUÇÃO";
+	}
+	if (preencheCargo == "9") {
+	document.getElementById('cargo').value = "ABASTECEDOR DE SILOS DE CARVÃO";
+	}
+	if (preencheCargo == "10") {
+	document.getElementById('cargo').value = "ABATEDOR";
+	}
 }
-
-function padeiro() {
-    var cidade = new Option("Padeiro");
-    document.getElementById('ccidade').add(cidade);
-    // cidade = new Option("PADEIROS, CONFEITEIROS E AFINS");
-    // document.getElementById('ccidade').add(cidade);
-    // cidade = new Option("");
-    // document.getElementById('ccidade').add(cidade);
-    // cidade = new Option("Brasiléia");
-    // document.getElementById('ccidade').add(cidade);
-    // cidade = new Option("Bujari");
-    // document.getElementById('ccidade').add(cidade);
-}
-
-function goias() {
-	var cidade = new Option("Goiânia");
-	document.getElementById('ccidade').add(cidade);
-	cidade = new Option("Abadia de Goiás");
-	document.getElementById('ccidade').add(cidade);
-	cidade = new Option("Abadiânia");
-	document.getElementById('ccidade').add(cidade);
-	cidade = new Option("Acreúna");
-	document.getElementById('ccidade').add(cidade);
-	cidade = new Option("Adelândia");
-	document.getElementById('ccidade').add(cidade);
-}
-
-

@@ -78,16 +78,15 @@
                 </select>
             </td>
 
-            <td class=""><strong>Data de Nasc.</br>
-                </strong>
-                <input type="date">
+        
+            <td>
+                <strong>Data Nasc.:</strong><br>
+                <input type="date" name="datanascimento" id="datanascimento" required>
             </td>
-
-            <td class=""><strong>Idade</br>
-                </strong>
-                <input type="number">
+            <td>
+                <strong>Idade:</strong><br>
+                <input id="idade" type="number">
             </td>
-
             <td class=""><strong>Nascionalidade</br>
                 </strong>
                 <input type="text">
@@ -123,7 +122,7 @@
             <div>
                 <strong>CPF</br>
                 </strong>
-                <input type="text" id="valor" name="valor" />
+                <input type="text" id="valor" name="valor" oninput="mascara(this)" />
                 <button onclick={validarCPF(valor)}>Validar</button>
             </div>
             <br>
@@ -193,26 +192,30 @@
                 <input type="date">
             </td>
 
-            <td class="cd"><strong for="cuf">CBO: <br /> </strong><select name="tuf" id="cuf"
-                oninput="busca_cbo()">
-                <optgroup label="Região Norte">
-                    <option value="XX" selected>...</option>
-                    <option value="padeiro">	
-                        8483-05</option>
-                   
-                </optgroup>
-                
-                
+            <td>
+                <strong>CBO:</strong>
+                <select id="cbo" oninput="verificaCbo()">
+                    <option>-</option>
+                    <option value="1">6125-10</option>
+                    <option value="2">2631-05</option>
+                    <option value="3">2631-05</option>
+                    <option value="4">6220-20</option>
+                    <option value="5">8621-20</option>
+                    <option value="6">8621-60</option>
+                    <option value="7">7842-05</option>
+                    <option value="8">7842-05</option>
+                    <option value="9">6326-05</option>
+                    <option value="10">8485-05</option>
+                </select>
+            </td>
+            <td>
+                <span>
+                    <strong>Cargo/Função:</strong><br>
+                    <input id="cargo" type="text">
+                </span>
+            </td>
 
-        </td>
 
-        <td class="ce"><strong for="ccidade">Cargo: <br />
-        </strong>
-        <select name="tcidade" id="ccidade" maxlength="50">
-
-           
-        </select>
-    </td>
 
         </table>
         </br>
