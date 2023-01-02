@@ -20,6 +20,25 @@ file.addEventListener('change', () => {
 	reader.readAsDataURL(file.files[0]);
 });
 
+$("#datanascimento").on('blur', function () {
+	calcular_idade();
+});
+
+function calcular_idade() {
+	if ($('datanascimento').val() != '') {
+		var dataInput = new Date($("#datanascimento").val());
+		if (!isNaN(dataInput)) {
+			var dataAtual = new Date();
+			var diferenca = dataAtual.getFullYear() - dataInput.getFullYear();
+			document.getElementById('idade').value = diferenca;
+			console.log("gg");
+			return true;
+		}
+	}
+	return false;
+}
+calcular_idade();
+
 
 function validarCPF() {
 
@@ -31,7 +50,7 @@ function validarCPF() {
 	// valor = '';
 	valor = valor.replace(/[^\d]+/g, '');
 	if (valor == '') {
-		alert("Erro")
+		alert("Insira um CPF")
 		return false
 	} else {
 		// Elimina CPFs invalidos conhecidos
@@ -58,7 +77,7 @@ function validarCPF() {
 		if (rev == 10 || rev == 11)
 			rev = 0;
 		if (rev != parseInt(valor.charAt(9))) {
-			alert("CPF Invalido2")
+			alert("CPF Invalido")
 			return false;
 		}
 		// Valida 2o digito	
@@ -69,14 +88,69 @@ function validarCPF() {
 		if (rev == 10 || rev == 11)
 			rev = 0;
 		if (rev != parseInt(valor.charAt(10))) {
-			alert("nha")
+			alert("CPF Invalido")
 			return false;
 
 		}
-		alert("Certo")
+		alert("Ok")
 		return true;
 	};
 
 
 }
-// alert (validarCPF(cpf));
+
+
+function busca_cbo() {
+    var estado = document.getElementById("cuf").value;
+    var lista = document.getElementById("ccidade");
+    while (lista.options.length) {
+        lista.remove(0);
+    }
+    if (estado == "padeiro") {
+        padeiro();
+    } else {
+        if (estado == "AL") {
+            alagoas();
+        } else {
+            if (estado == "AM") {
+                amazonas();
+            } else {
+                if (estado == "AP") {
+                    amapa();
+                } else {
+                    if (estado == "GO") {
+                        goias();
+                    }
+                }
+            }
+        }
+    }
+}
+
+function padeiro() {
+    var cidade = new Option("Padeiro");
+    document.getElementById('ccidade').add(cidade);
+    // cidade = new Option("PADEIROS, CONFEITEIROS E AFINS");
+    // document.getElementById('ccidade').add(cidade);
+    // cidade = new Option("");
+    // document.getElementById('ccidade').add(cidade);
+    // cidade = new Option("Brasiléia");
+    // document.getElementById('ccidade').add(cidade);
+    // cidade = new Option("Bujari");
+    // document.getElementById('ccidade').add(cidade);
+}
+
+function goias() {
+	var cidade = new Option("Goiânia");
+	document.getElementById('ccidade').add(cidade);
+	cidade = new Option("Abadia de Goiás");
+	document.getElementById('ccidade').add(cidade);
+	cidade = new Option("Abadiânia");
+	document.getElementById('ccidade').add(cidade);
+	cidade = new Option("Acreúna");
+	document.getElementById('ccidade').add(cidade);
+	cidade = new Option("Adelândia");
+	document.getElementById('ccidade').add(cidade);
+}
+
+
